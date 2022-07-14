@@ -12,7 +12,7 @@ FUNCTION z_sort_zst2_pai.
   /scwm/cl_rf_bll_srvc=>c_prmod_foreground ).
   "1 validation of user-input
   IF zsort-rfhu IS INITIAL.
-    MESSAGE 'Enter Handling Unit' TYPE 'E'.
+    MESSAGE 'Enter Handling Unit' TYPE wmegc_severity_err.
   ENDIF.
   "2 get destination hu
   go_pack->get_hu(
@@ -28,7 +28,7 @@ FUNCTION z_sort_zst2_pai.
     WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
   ENDIF.
   IF ls_dest_hu-copst IS NOT INITIAL.
-    MESSAGE 'HU is closed' TYPE 'E'.
+    MESSAGE 'HU is closed' TYPE wmegc_severity_err.
   ENDIF.
   "3 repack item into the dest hu
   DATA(ls_quan) = VALUE /scwm/s_quan( quan = zsort-vsola

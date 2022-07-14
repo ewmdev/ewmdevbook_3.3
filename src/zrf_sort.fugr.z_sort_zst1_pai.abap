@@ -14,12 +14,12 @@ FUNCTION z_sort_zst1_pai.
   "1 validation of user-input
   CLEAR: zsort-source_hu, zsort-guid_stock.
   IF zsort-idplate IS INITIAL.
-    MESSAGE 'Enter a stock identification' TYPE 'E'.
+    MESSAGE 'Enter a stock identification' TYPE wmegc_severity_err.
   ENDIF.
   "2 check if ID is a valid stock identification
   DATA(ls_rng_idplate) = VALUE rsdsselopt( low    = zsort-idplate
-                                           sign   = 'I'
-                                           option = 'EQ' ).
+                                           sign   = wmegc_sign_inclusive
+                                           option = wmegc_option_eq ).
   APPEND ls_rng_idplate TO lt_rng_idplate.
 
   CALL FUNCTION '/SCWM/HU_SELECT_QUAN'
@@ -35,7 +35,7 @@ FUNCTION z_sort_zst1_pai.
       DATA(ls_huitm) = VALUE #( lt_huitm[ idplate = zsort-idplate ] ).
     CATCH cx_sy_itab_line_not_found.
       CLEAR zsort-idplate.
-      MESSAGE 'Stock Identification not found' TYPE 'E'.
+      MESSAGE 'Stock Identification not found' TYPE wmegc_severity_err.
       RETURN.
   ENDTRY.
   "3 validations
@@ -52,7 +52,7 @@ FUNCTION z_sort_zst1_pai.
     WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
   ENDIF.
   IF lv_open_to IS NOT INITIAL.
-    MESSAGE 'Open Task exists for pick-HU' TYPE 'E'.
+    MESSAGE 'Open Task exists for pick-HU' TYPE wmegc_severity_err.
   ENDIF.
   "4 set technical fields in RF application
   zsort-source_hu  = ls_huitm-guid_parent.

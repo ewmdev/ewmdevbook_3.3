@@ -22,8 +22,8 @@ FUNCTION z_sort_zst2_pbo.
   ENDIF.
   "2 set application screen fields
   zsort-dstgrp = ls_huitm-dstgrp.
-  zsort-vsola = ls_huitm-quana.
-  zsort-altme = ls_huitm-altme.
+  zsort-vsola  = ls_huitm-quana.
+  zsort-altme  = ls_huitm-altme.
   CALL METHOD go_stock->get_matkey_by_id
     EXPORTING
       iv_matid = ls_huitm-matid

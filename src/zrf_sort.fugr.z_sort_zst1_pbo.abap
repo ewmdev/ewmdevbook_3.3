@@ -13,10 +13,10 @@ FUNCTION z_sort_zst1_pbo.
   "get warehouse number of this resource
   CALL FUNCTION '/SCWM/RSRC_RESOURCE_MEMORY'
     EXPORTING
-      iv_uname = sy-uname
+      iv_uname    = sy-uname
     CHANGING
-      cs_rsrc  = ls_rsrc.
-  zsort-lgnum = ls_rsrc-lgnum.
+      cs_rsrc     = ls_rsrc.
+      zsort-lgnum = ls_rsrc-lgnum.
 
   "2 init packing & transaction manager
   /scwm/cl_tm=>set_lgnum( iv_lgnum = zsort-lgnum ).

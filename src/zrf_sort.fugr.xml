@@ -109,23 +109,9 @@
        <CONT_TYPE>SCREEN</CONT_TYPE>
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
-       <NAME>STEP</NAME>
-       <TEXT>Step_1</TEXT>
-       <LINE>001</LINE>
-       <COLUMN>001</COLUMN>
-       <LENGTH>006</LENGTH>
-       <VISLENGTH>006</VISLENGTH>
-       <HEIGHT>001</HEIGHT>
-       <FORMAT>CHAR</FORMAT>
-       <REQU_ENTRY>N</REQU_ENTRY>
-      </RPY_DYFATC>
-      <RPY_DYFATC>
-       <CONT_TYPE>SCREEN</CONT_TYPE>
-       <CONT_NAME>SCREEN</CONT_NAME>
-       <TYPE>TEXT</TYPE>
        <NAME>ZRF_SORT-IDPLATE</NAME>
        <TEXT>StckID</TEXT>
-       <LINE>002</LINE>
+       <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>006</LENGTH>
        <VISLENGTH>006</VISLENGTH>
@@ -143,7 +129,7 @@
        <NAME>ZRF_SORT-IDPLATE</NAME>
        <TEXT>____________________</TEXT>
        <ROLLING>X</ROLLING>
-       <LINE>002</LINE>
+       <LINE>001</LINE>
        <COLUMN>008</COLUMN>
        <LENGTH>020</LENGTH>
        <VISLENGTH>013</VISLENGTH>
@@ -190,7 +176,7 @@
       <SCREEN>0002</SCREEN>
       <LANGUAGE>E</LANGUAGE>
       <DESCRIPT>Screen for Step 2</DESCRIPT>
-      <TYPE>N</TYPE>
+      <TYPE>I</TYPE>
       <NEXTSCREEN>0002</NEXTSCREEN>
       <LINES>010</LINES>
       <COLUMNS>020</COLUMNS>
@@ -206,23 +192,9 @@
        <CONT_TYPE>SCREEN</CONT_TYPE>
        <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>TEXT</TYPE>
-       <NAME>STEP</NAME>
-       <TEXT>Step_2</TEXT>
-       <LINE>001</LINE>
-       <COLUMN>001</COLUMN>
-       <LENGTH>006</LENGTH>
-       <VISLENGTH>006</VISLENGTH>
-       <HEIGHT>001</HEIGHT>
-       <FORMAT>CHAR</FORMAT>
-       <REQU_ENTRY>N</REQU_ENTRY>
-      </RPY_DYFATC>
-      <RPY_DYFATC>
-       <CONT_TYPE>SCREEN</CONT_TYPE>
-       <CONT_NAME>SCREEN</CONT_NAME>
-       <TYPE>TEXT</TYPE>
        <NAME>ZRF_SORT-RFHU</NAME>
        <TEXT>HU____</TEXT>
-       <LINE>002</LINE>
+       <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>006</LENGTH>
        <VISLENGTH>006</VISLENGTH>
@@ -240,7 +212,7 @@
        <NAME>ZRF_SORT-RFHU</NAME>
        <TEXT>____________________________________________________________________________________________________________________________________</TEXT>
        <ROLLING>X</ROLLING>
-       <LINE>002</LINE>
+       <LINE>001</LINE>
        <COLUMN>008</COLUMN>
        <LENGTH>255</LENGTH>
        <VISLENGTH>013</VISLENGTH>
@@ -258,7 +230,7 @@
        <TYPE>TEXT</TYPE>
        <NAME>ZRF_SORT-DSTGRP</NAME>
        <TEXT>CnsGrp</TEXT>
-       <LINE>003</LINE>
+       <LINE>002</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>006</LENGTH>
        <VISLENGTH>006</VISLENGTH>
@@ -275,7 +247,7 @@
        <TYPE>TEMPLATE</TYPE>
        <NAME>ZRF_SORT-DSTGRP</NAME>
        <TEXT>__________</TEXT>
-       <LINE>003</LINE>
+       <LINE>002</LINE>
        <COLUMN>008</COLUMN>
        <LENGTH>010</LENGTH>
        <VISLENGTH>010</VISLENGTH>
