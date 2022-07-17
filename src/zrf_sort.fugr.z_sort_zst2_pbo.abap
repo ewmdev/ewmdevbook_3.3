@@ -7,7 +7,7 @@ FUNCTION z_sort_zst2_pbo.
 
   BREAK-POINT ID zewmdevbook_336.
 
-  "1 get item details
+  "1. Get item details
   go_pack->get_hu_item(
     EXPORTING
       iv_guid_hu    = zsort-source_hu
@@ -20,7 +20,7 @@ FUNCTION z_sort_zst2_pbo.
     MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
     WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
   ENDIF.
-  "2 set application screen fields
+  "2. Set application screen fields
   zsort-dstgrp = ls_huitm-dstgrp.
   zsort-vsola  = ls_huitm-quana.
   zsort-altme  = ls_huitm-altme.

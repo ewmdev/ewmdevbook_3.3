@@ -85,6 +85,72 @@
       </RSFDO>
      </DOCUMENTATION>
     </item>
+    <item>
+     <FUNCNAME>Z_SORT_ZST3_PAI</FUNCNAME>
+     <SHORT_TEXT>Step 3 PAI</SHORT_TEXT>
+     <CHANGING>
+      <RSCHA>
+       <PARAMETER>ZSORT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZRF_SORT</TYP>
+      </RSCHA>
+      <RSCHA>
+       <PARAMETER>CT_INQ_HU_LOOP</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>/SCWM/TT_RF_INQ_HU_LOOP</TYP>
+      </RSCHA>
+      <RSCHA>
+       <PARAMETER>CS_INQ_HU</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>/SCWM/S_RF_INQ_HU</TYP>
+      </RSCHA>
+     </CHANGING>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>ZSORT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>New RF Transaction</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>CT_INQ_HU_LOOP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for RF screens for handling unit loop</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>CS_INQ_HU</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Structure for RF screens for handling unit inquiries</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>Z_SORT_ZST3_PBO</FUNCNAME>
+     <SHORT_TEXT>Step 3 PBO</SHORT_TEXT>
+     <CHANGING>
+      <RSCHA>
+       <PARAMETER>ZSORT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZRF_SORT</TYP>
+      </RSCHA>
+      <RSCHA>
+       <PARAMETER>CT_INQ_HU_LOOP</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>/SCWM/TT_RF_INQ_HU_LOOP</TYP>
+      </RSCHA>
+     </CHANGING>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>ZSORT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>New RF Transaction</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>CT_INQ_HU_LOOP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Table type for RF screens for handling unit loop</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
    </FUNCTIONS>
    <DYNPROS>
     <item>
@@ -260,6 +326,136 @@
       <RPY_DYFATC>
        <CONT_TYPE>SCREEN</CONT_TYPE>
        <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZRF_SORT-MATNR</NAME>
+       <TEXT>Prod._</TEXT>
+       <LINE>003</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>006</LENGTH>
+       <VISLENGTH>006</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>ZRF_SORT-MATNR</NAME>
+       <TEXT>__________________</TEXT>
+       <ROLLING>X</ROLLING>
+       <LINE>004</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>018</LENGTH>
+       <VISLENGTH>013</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>X</MODIFIC>
+       <CONV_EXIT>MDLP1</CONV_EXIT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>ZRF_SORT-MATNR_VERIF</NAME>
+       <TEXT>__________________________________________________</TEXT>
+       <ROLLING>X</ROLLING>
+       <LINE>004</LINE>
+       <COLUMN>016</COLUMN>
+       <LENGTH>050</LENGTH>
+       <VISLENGTH>001</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <GROUP3>002</GROUP3>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>X</MODIFIC>
+       <CONV_EXIT>MDLPS</CONV_EXIT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>ZRF_SORT-MAKTX</NAME>
+       <TEXT>____________________</TEXT>
+       <ROLLING>X</ROLLING>
+       <LINE>005</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>013</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>X</MODIFIC>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZRF_SORT-VSOLA</NAME>
+       <TEXT>SceQty</TEXT>
+       <LINE>006</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>006</LENGTH>
+       <VISLENGTH>006</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <UP_LOWER>X</UP_LOWER>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>ZRF_SORT-VSOLA</NAME>
+       <TEXT>____________________________________________________________________________________________________________________________________</TEXT>
+       <ROLLING>X</ROLLING>
+       <LINE>006</LINE>
+       <COLUMN>008</COLUMN>
+       <LENGTH>255</LENGTH>
+       <VISLENGTH>006</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>X</MODIFIC>
+       <CONV_EXIT>QNTY1</CONV_EXIT>
+       <UP_LOWER>X</UP_LOWER>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>ZRF_SORT-ALTME</NAME>
+       <TEXT>___</TEXT>
+       <LINE>006</LINE>
+       <COLUMN>015</COLUMN>
+       <LENGTH>003</LENGTH>
+       <VISLENGTH>003</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>UNIT</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <CONV_EXIT>CUNIT</CONV_EXIT>
+       <UP_LOWER>X</UP_LOWER>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>OKCODE</TYPE>
        <TEXT>____________________</TEXT>
        <LENGTH>020</LENGTH>
@@ -282,6 +478,187 @@
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>  MODULE user_command_sscr.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>SAPLZRF_SORT</PROGRAM>
+      <SCREEN>0003</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Screen for Step 3</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0003</NEXTSCREEN>
+      <LINES>010</LINES>
+      <COLUMNS>020</COLUMNS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>LOOP</TYPE>
+       <NAME>%#C_101</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>002</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>020</LENGTH>
+       <HEIGHT>004</HEIGHT>
+       <LOOP_TYPE>FIX</LOOP_TYPE>
+       <LOOP_BLOCK>001</LOOP_BLOCK>
+       <LOOP_DISP>004</LOOP_DISP>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>/SCWM/S_RF_INQ_HU-SELNO</NAME>
+       <TEXT>___</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>003</LENGTH>
+       <VISLENGTH>003</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>NUMC</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>PUSH</TYPE>
+       <NAME>/SCWM/S_RF_SCRELM-PGUP</NAME>
+       <TEXT>^</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>018</COLUMN>
+       <LENGTH>001</LENGTH>
+       <VISLENGTH>001</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <PUSH_FCODE>PGUP</PUSH_FCODE>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>1</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>PUSH</TYPE>
+       <NAME>/SCWM/S_RF_SCRELM-PGDN</NAME>
+       <TEXT>v</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>020</COLUMN>
+       <LENGTH>001</LENGTH>
+       <VISLENGTH>001</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <PUSH_FCODE>PGDN</PUSH_FCODE>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>1</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>LOOP</CONT_TYPE>
+       <CONT_NAME>%#C_101</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>/SCWM/S_RF_INQ_HU_LOOP-SEQNO</NAME>
+       <TEXT>___</TEXT>
+       <LINE>002</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>003</LENGTH>
+       <VISLENGTH>003</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>NUMC</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>LOOP</CONT_TYPE>
+       <CONT_NAME>%#C_101</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>/SCWM/S_RF_INQ_HU_LOOP-HUIDENT</NAME>
+       <TEXT>____________________</TEXT>
+       <ROLLING>X</ROLLING>
+       <LINE>002</LINE>
+       <COLUMN>005</COLUMN>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>011</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <CONV_EXIT>HUID</CONV_EXIT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>LOOP</CONT_TYPE>
+       <CONT_NAME>%#C_101</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>/SCWM/S_RF_INQ_HU_LOOP-LETYP</NAME>
+       <TEXT>____</TEXT>
+       <LINE>002</LINE>
+       <COLUMN>017</COLUMN>
+       <LENGTH>004</LENGTH>
+       <VISLENGTH>004</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>  MODULE status_sscr_loop.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  LOOP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    MODULE loop_output.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  ENDLOOP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE loop_scrolling_set.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>  LOOP.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    MODULE loop_input.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  ENDLOOP.</LINE>
+      </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>  MODULE user_command_sscr.</LINE>
       </RPY_DYFLOW>

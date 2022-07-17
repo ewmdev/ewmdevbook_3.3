@@ -7,14 +7,14 @@ FUNCTION z_sort_zst2_pai.
 
   BREAK-POINT ID zewmdevbook_336.
 
-  "0 stay on this screen (default)
+  "0. Stay on this screen (default)
   /scwm/cl_rf_bll_srvc=>set_prmod(
   /scwm/cl_rf_bll_srvc=>c_prmod_foreground ).
-  "1 validation of user-input
+  "1. Validation of user-input
   IF zsort-rfhu IS INITIAL.
     MESSAGE 'Enter Handling Unit' TYPE wmegc_severity_err.
   ENDIF.
-  "2 get destination hu
+  "2. Get destination hu
   go_pack->get_hu(
     EXPORTING
       iv_huident = CONV #( zsort-rfhu )
@@ -30,7 +30,7 @@ FUNCTION z_sort_zst2_pai.
   IF ls_dest_hu-copst IS NOT INITIAL.
     MESSAGE 'HU is closed' TYPE wmegc_severity_err.
   ENDIF.
-  "3 repack item into the dest hu
+  "3. Repack item into the dest hu
   DATA(ls_quan) = VALUE /scwm/s_quan( quan = zsort-vsola
                                       unit = zsort-altme ).
   go_pack->repack_stock(
@@ -45,7 +45,7 @@ FUNCTION z_sort_zst2_pai.
     MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
     WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
   ENDIF.
-  "4 save
+  "4. Save
   go_pack->/scwm/if_pack_bas~save(
     EXPORTING
       iv_commit = abap_true
@@ -58,7 +58,7 @@ FUNCTION z_sort_zst2_pai.
     MESSAGE ID sy-msgid TYPE sy-msgty NUMBER sy-msgno
     WITH sy-msgv1 sy-msgv2 sy-msgv3 sy-msgv4.
   ENDIF.
-  "5 navigate to the transaction end
+  "5. Navigate to the transaction end
   /scwm/cl_rf_bll_srvc=>set_prmod(
     /scwm/cl_rf_bll_srvc=>c_prmod_background ).
 

@@ -8,17 +8,17 @@ FUNCTION z_sort_zst1_pbo.
 
   BREAK-POINT ID zewmdevbook_336.
 
-  "1 init the work area
+  "1. Init the work area
   CLEAR zsort.
-  "get warehouse number of this resource
+  "Get warehouse number of this resource
   CALL FUNCTION '/SCWM/RSRC_RESOURCE_MEMORY'
     EXPORTING
-      iv_uname    = sy-uname
+      iv_uname = sy-uname
     CHANGING
-      cs_rsrc     = ls_rsrc.
-      zsort-lgnum = ls_rsrc-lgnum.
+      cs_rsrc  = ls_rsrc.
+  zsort-lgnum = ls_rsrc-lgnum.
 
-  "2 init packing & transaction manager
+  "2. Init packing & transaction manager
   /scwm/cl_tm=>set_lgnum( iv_lgnum = zsort-lgnum ).
   IF go_pack IS NOT BOUND.
     go_pack = NEW /scwm/cl_wm_packing( ).
@@ -38,7 +38,7 @@ FUNCTION z_sort_zst1_pbo.
     /scwm/cl_pack_view=>msg_error( ).
   ENDIF.
 
-  "3 init stock-ui
+  "3. Init stock-ui
   IF go_stock IS INITIAL.
     CREATE OBJECT go_stock.
   ENDIF.
