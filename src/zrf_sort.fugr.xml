@@ -50,6 +50,24 @@
      </DOCUMENTATION>
     </item>
     <item>
+     <FUNCNAME>Z_SORT_ZST2_EXCEPTIONS</FUNCNAME>
+     <SHORT_TEXT>Step 2 Exceptions</SHORT_TEXT>
+     <CHANGING>
+      <RSCHA>
+       <PARAMETER>ZSORT</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>ZRF_SORT</TYP>
+      </RSCHA>
+     </CHANGING>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>ZSORT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>New RF Transaction</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
      <FUNCNAME>Z_SORT_ZST2_PAI</FUNCNAME>
      <SHORT_TEXT>Step 2 PAI</SHORT_TEXT>
      <CHANGING>
