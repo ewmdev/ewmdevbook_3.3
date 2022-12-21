@@ -1,5 +1,5 @@
 # Chapters 33x: New RF Transaction
-Includes the following chapters from 336 up to 3310 (all on custom RF transaction)
+Includes all coding contained in the following chapters from 336 up to 3310.
 <br>Custom Developments:
 <br>336  New RF Transaction
 <br>337  Realization of a Verification Profile
