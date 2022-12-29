@@ -18,16 +18,20 @@ FORM loop_input.
 *- data
   DATA lv_index     TYPE i.
   DATA lv_line      TYPE i.
-  DATA lv_tabname   TYPE tabname.   "#EC NEEDED
+  DATA lv_tabname   TYPE tabname.                           "#EC NEEDED
   DATA lv_fieldname TYPE fieldname.
   DATA lv_field(60) TYPE c.
-  DATA lv_fcode     TYPE /scwm/de_fcode.   "#EC NEEDED
+  DATA lv_fcode     TYPE /scwm/de_fcode.                    "#EC NEEDED
   DATA lv_loopc     TYPE i.
 
 *- field-symbols
-  FIELD-SYMBOLS: <lv>     TYPE ANY,
-                 <lv_scr> TYPE ANY,
-                 <ls_scr> TYPE ANY.
+  FIELD-SYMBOLS: <lv>     TYPE any,
+                 <lv_scr> TYPE any,
+                 <ls_scr> TYPE any.
+
+  IF /scwm/cl_rf_bll_srvc=>get_design_mode( ) = abap_true.
+    RETURN.
+  ENDIF.
 
 * Calculate index of current table line
   lv_index = /scwm/cl_rf_bll_srvc=>get_line( ) + sy-stepl - 1.
@@ -47,9 +51,9 @@ FORM loop_input.
 
 * Check number of table lines
   lv_loopc = /scwm/cl_rf_dynpro_srvc=>get_loopc( ).
-  if lv_loopc = 0.  "Step-loop but number of lines = 0 -> not good
+  IF lv_loopc = 0.  "Step-loop but number of lines = 0 -> not good
     /scwm/cl_rf_dynpro_srvc=>set_loopc( sy-loopc ).
-  endif.
+  ENDIF.
 
 * Save current line
   MODIFY <gt_scr> FROM <ls_scr> INDEX lv_index.
@@ -99,11 +103,11 @@ FORM loop_input.
           IF lv_field_found = abap_true.
             CALL BADI lo_badi->log_rf_field_input
               EXPORTING
-                iv_field    = lv_field_long
+                iv_field       = lv_field_long
                 iv_field_value = lv_field_value.
           ENDIF.
         ENDIF.
-      CATCH cx_badi.                                      "#EC NO_HANDLER
+      CATCH cx_badi.                                    "#EC NO_HANDLER
     ENDTRY.
   ENDIF.
 

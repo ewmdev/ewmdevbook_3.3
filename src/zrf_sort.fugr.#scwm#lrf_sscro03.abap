@@ -17,6 +17,11 @@ FORM loop_scrolling_set .
   DATA lv_last_line TYPE i.
   DATA lv_loopc     TYPE i.
 
+  IF /scwm/cl_rf_bll_srvc=>get_design_mode( ) = abap_true.
+    RETURN.
+  ENDIF.
+
+
 * Lines of table
   DESCRIBE TABLE <gt_scr> LINES lv_lines.
   IF lv_lines <= 1.

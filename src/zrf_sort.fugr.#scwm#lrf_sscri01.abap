@@ -45,12 +45,16 @@ FORM user_command_sscr .
 
 * Once displayed message line is cleared
   CLEAR /scwm/s_rf_screlm-msgtx.
+*
+  IF /scwm/cl_rf_bll_srvc=>get_design_mode( ) = abap_true.
+    RETURN.
+  ENDIF.
 
 * Get function code
   lv_fcode         = /scwm/cl_rf_bll_srvc=>get_okcode( ).
 
   IF lv_fcode = 'ENTER'.
-    DATA: lv_field_long TYPE /scwm/de_fieldname_60,
+    DATA: lv_field_long  TYPE /scwm/de_fieldname_60,
           lv_field_value TYPE text256.
     DATA lo_badi       TYPE REF TO /scwm/ex_rf_logging.
     DATA(lv_lgnum) = /scwm/cl_rf_bll_srvc=>get_lgnum( ).
@@ -78,11 +82,11 @@ FORM user_command_sscr .
           IF lv_field_found = abap_true.
             CALL BADI lo_badi->log_rf_field_input
               EXPORTING
-                iv_field    = lv_field_long
+                iv_field       = lv_field_long
                 iv_field_value = lv_field_value.
           ENDIF.
         ENDIF.
-      CATCH cx_badi.                                      "#EC NO_HANDLER
+      CATCH cx_badi.                                    "#EC NO_HANDLER
     ENDTRY.
   ENDIF.
 
@@ -189,17 +193,17 @@ FORM user_command_sscr .
           ELSE.
 *           Normal input fields
 *           Check if SCRELM_ATTRIB entry for Input Off exists
-              CALL METHOD /scwm/cl_rf_bll_srvc=>get_screlm_inp_attrib_from_bll
-                EXPORTING
-                  iv_screlm_name = screen-name
-                RECEIVING
-                  rv_value       = lv_value_inp.
-              IF lv_value_inp = '0'.
+            CALL METHOD /scwm/cl_rf_bll_srvc=>get_screlm_inp_attrib_from_bll
+              EXPORTING
+                iv_screlm_name = screen-name
+              RECEIVING
+                rv_value       = lv_value_inp.
+            IF lv_value_inp = '0'.
 *             Manually switched off field
-                /scwm/cl_rf_bll_srvc=>set_screlm_input_on(
-                    screen-name ).
-              ELSE.
-                IF screen-input = /scwm/cl_rf_dynpro_srvc=>c_attrib_off.
+              /scwm/cl_rf_bll_srvc=>set_screlm_input_on(
+                  screen-name ).
+            ELSE.
+              IF screen-input = /scwm/cl_rf_dynpro_srvc=>c_attrib_off.
 *               Closed field like text
                 CONTINUE.
               ELSE.
@@ -320,30 +324,6 @@ FORM user_command_sscr .
 *   It remains on the actual field -> next requires will
 *   be really the next one
     CLEAR lv_field.
-
-* set value help list when enable editing
-    DATA: lv_char40          TYPE /scwm/de_rf_text,
-          lt_hu_pmat_type    TYPE /scwm/tt_rf_mat_hutyp,
-          ls_hu_pmat_type    TYPE /SCWM/S_RF_MAT_HUTYP.
-
-    IF ( /scwm/cl_rf_bll_srvc=>get_step( ) = 'IVHU' OR /scwm/cl_rf_bll_srvc=>get_step( ) = 'IVHUHU' )
-    AND /scwm/cl_rf_bll_srvc=>get_field( ) = '/SCWM/S_RF_INVENTORY_HEAD-HU_PMAT'.
-      IF /scwm/cl_rf_bll_srvc=>get_listbox( ) IS INITIAL.
-        CALL FUNCTION '/SCWM/RF_HU_IVHU_PMLIST'
-        IMPORTING
-          et_hu_type = lt_hu_pmat_type.
-
-        LOOP AT lt_hu_pmat_type INTO ls_hu_pmat_type.
-          CONCATENATE ls_hu_pmat_type-matnr ls_hu_pmat_type-maktx INTO lv_char40 SEPARATED BY '  '.
-* insert packaging material
-          /scwm/cl_rf_bll_srvc=>insert_listbox(
-          iv_fieldname = '/SCWM/S_RF_INVENTORY_HEAD-HU_PMAT'
-          iv_value = ls_hu_pmat_type-matnr
-          iv_text = lv_char40 ).
-        ENDLOOP.
-      ENDIF.
-    ENDIF.
-
   ENDIF.
 
   IF lv_field IS NOT INITIAL AND

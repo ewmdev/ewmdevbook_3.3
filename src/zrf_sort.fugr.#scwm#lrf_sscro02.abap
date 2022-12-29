@@ -24,6 +24,10 @@ FORM loop_output .
   DATA lv_attrib_inv TYPE /scwm/de_screlm_attrib.
   DATA lv_field      TYPE text60.
 
+  IF /scwm/cl_rf_bll_srvc=>get_design_mode( ) = abap_true.
+    RETURN.
+  ENDIF.
+
 * Number of step-loop rows
   /scwm/cl_rf_dynpro_srvc=>set_loopc( sy-loopc ).
   lv_line = /scwm/cl_rf_bll_srvc=>get_cursor_line( ).

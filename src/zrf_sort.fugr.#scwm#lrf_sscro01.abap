@@ -18,7 +18,7 @@ ENDMODULE.                 " STATUS_sscr  OUTPUT
 MODULE status_sscr_loop OUTPUT.
 
   DATA:
-    gv_field TYPE screen-name.   "#EC DECL_MODUL
+    gv_field TYPE screen-name.                          "#EC DECL_MODUL
 
   CLEAR gv_field.
   PERFORM status_sscr
@@ -53,10 +53,42 @@ FORM status_sscr USING iv_flg_loop TYPE xfeld.
   DATA lt_param           TYPE /scwm/tt_param_name.
   DATA lv_param           TYPE /scwm/de_param_name.
   DATA lv_param_structure TYPE tabname.
-  DATA lv_index           TYPE i.   "#EC NEEDED
+  DATA lv_index           TYPE i.                           "#EC NEEDED
 
-  FIELD-SYMBOLS: <ls> TYPE ANY,
-                 <lv> TYPE ANY.
+  FIELD-SYMBOLS: <ls> TYPE any,
+                 <lv> TYPE any.
+
+  IF /scwm/cl_rf_bll_srvc=>get_design_mode( ) = abap_true.
+    "clear screen fields
+    lt_param = /scwm/cl_rf_bll_srvc=>get_screen_param( ).
+
+    CLEAR: /scwm/s_rf_screlm-menu1, /scwm/s_rf_screlm-menu2, /scwm/s_rf_screlm-menu3, /scwm/s_rf_screlm-menu4, /scwm/s_rf_screlm-menu5, /scwm/s_rf_screlm-menu6,
+   /scwm/s_rf_screlm-menu7, /scwm/s_rf_screlm-menu8, /scwm/s_rf_screlm-menu9, /scwm/s_rf_screlm-menu10, /scwm/s_rf_screlm-menu11,
+   /scwm/s_rf_screlm-menu12, /scwm/s_rf_screlm-menu13, /scwm/s_rf_screlm-menu14, /scwm/s_rf_screlm-menu15, /scwm/s_rf_screlm-menu16,
+   /scwm/s_rf_screlm-menu17, /scwm/s_rf_screlm-menu18, /scwm/s_rf_screlm-menu19, /scwm/s_rf_screlm-menu20.
+
+* Put table parameter at the end of the parameters
+    LOOP AT lt_param INTO lv_param.
+      IF /scwm/cl_rf_bll_srvc=>get_param_tabletype( lv_param )
+              IS NOT INITIAL.
+        DELETE lt_param.
+        APPEND lv_param TO lt_param.
+        EXIT.
+      ENDIF.
+    ENDLOOP.
+
+* Loop by definition of parameters-structures
+    LOOP AT lt_param INTO lv_param.
+*   Assign reference to screen structure (TABLES:...)
+      lv_param_structure = /scwm/cl_rf_bll_srvc=>get_param_structure(
+                               lv_param ).
+      ASSIGN (lv_param_structure) TO <gs_scr>.
+      IF sy-subrc = 0.
+        CLEAR <gs_scr>.
+      ENDIF.
+    ENDLOOP.
+    RETURN.
+  ENDIF.
 
   notify_bell_signal = /scwm/cl_rf_bll_srvc=>get_bell_signal( ).
 
